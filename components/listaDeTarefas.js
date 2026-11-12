@@ -30,11 +30,14 @@ export default function listaDeTarefas() {
   };
 
   return (
-    <ul>
-      {tarefasIniciais.map((tarefa) => (
-        <tarefaItem key={tarefa.id} tarefa={tarefa} />
-      ))}
-      ;
-    </ul>
+    <section>
+      <formTarefa adicionar={adicionar} />
+      <ul>
+        {tarefasIniciais.map((tarefa) => (
+          <tarefaItem key={tarefa.id} tarefa={tarefa} />
+        ))}
+        ;
+      </ul>
+    </section>
   );
 }
