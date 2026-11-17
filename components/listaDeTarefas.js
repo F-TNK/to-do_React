@@ -21,8 +21,13 @@ export default function ListaDeTarefas() {
     setTarefas(tarefas.filter((tarefa) => tarefa.id !== id));
   };
 
-  const adicionar = (descricao) => {
-    const nova = { id: Date.now(), descricao: descricao, concluida: false };
+  const adicionar = (descricao, prioridade) => {
+    const nova = {
+      id: Date.now(),
+      descricao: descricao,
+      concluida: false,
+      prioridade: prioridade,
+    };
     setTarefas([...tarefas, nova]);
   };
 

@@ -7,6 +7,7 @@ export default function TarefaItem({ tarefa, aoConcluir, aoExcluir }) {
         onChange={() => aoConcluir(tarefa.id)}
       />
       <span>{tarefa.descricao}</span>
+      <span>{tarefa.prioridade}</span>
       <button
         type="button"
         className="botao-secundario"
