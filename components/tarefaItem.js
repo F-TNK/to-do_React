@@ -12,7 +12,7 @@ export default function TarefaItem({ tarefa, aoConcluir, aoExcluir }) {
         className="botao-secundario"
         onClick={() => aoExcluir(tarefa.id)}
       >
-        Enviar
+        Excluir
       </button>
     </li>
   );
