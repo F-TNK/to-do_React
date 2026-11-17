@@ -8,7 +8,10 @@ export default function formTarefa({ aoAdicionar }) {
 
   const enviar = (event) => {
     event.preventDefault();
-    if (texto.trim() === "") return;
+    if (texto.trim() === "") {
+      setErro("Digite uma Tarefa!");
+      return; // interrompe a função: não adiciona nada
+    }
     aoAdicionar(texto.trim());
     setTexto("");
     setErro("");

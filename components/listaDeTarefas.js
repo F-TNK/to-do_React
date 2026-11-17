@@ -40,4 +40,8 @@ export default function listaDeTarefas() {
       </ul>
     </section>
   );
+
+  const excluir = (id) => {
+    setTarefas(tarefas.filter((tarefa) => tarefa.id !== id));
+  };
 }
