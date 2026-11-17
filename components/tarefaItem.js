@@ -1,4 +1,4 @@
-export default function tarefaItem({ tarefa, aoConcluir, aoExcluir }) {
+export default function TarefaItem({ tarefa, aoConcluir, aoExcluir }) {
   return (
     <li className={tarefa.concluida ? "tarefa concluida" : "tarefa"}>
       <input

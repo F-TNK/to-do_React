@@ -1,17 +1,9 @@
-import { useState } from "react";
-import { tarefasIniciais } from "./dados";
-import tarefaItem from "./tarefaItem";
+"use client";
 
-// export default function listaDeTarefas() {
-//   return (
-//     <ul>
-//       {tarefasIniciais.map((tarefa) => (
-//         <tarefaItem key={tarefa.id} tarefa={tarefa} />
-//       ))}
-//       ;
-//     </ul>
-//   );
-// }
+import { useState } from "react";
+import { tarefasIniciais } from "./dados"; // export nomeado → usa chaves
+import TarefaItem from "./TarefaItem.js";
+import FormTarefa from "./FormTarefa.js";
 
 export default function listaDeTarefas() {
   const [tarefas, setTarefas] = useState(tarefasIniciais);
@@ -24,6 +16,10 @@ export default function listaDeTarefas() {
     );
   };
 
+  const excluir = (id) => {
+    setTarefas(tarefas.filter((tarefa) => tarefa.id !== id));
+  };
+
   const adicionar = (descricao) => {
     const nova = { id: Date.now(), descricao: descricao, concluida: false };
     setTarefas([...tarefas, nova]);
@@ -31,17 +27,17 @@ export default function listaDeTarefas() {
 
   return (
     <section>
-      <formTarefa adicionar={adicionar} />
+      <FormTarefa adicionar={adicionar} />
       <ul>
         {tarefasIniciais.map((tarefa) => (
-          <tarefaItem key={tarefa.id} tarefa={tarefa} />
+          <TarefaItem
+            key={tarefa.id}
+            tarefa={tarefa}
+            aoConcluir={concluir}
+            aoExcluir={excluir}
+          />
         ))}
-        ;
       </ul>
     </section>
   );
-
-  const excluir = (id) => {
-    setTarefas(tarefas.filter((tarefa) => tarefa.id !== id));
-  };
 }

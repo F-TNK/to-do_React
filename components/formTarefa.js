@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function formTarefa({ aoAdicionar }) {
+export default function FormTarefa({ aoAdicionar }) {
   const [texto, setTexto] = useState("");
   const [erro, setErro] = useState("");
 
@@ -17,9 +17,11 @@ export default function formTarefa({ aoAdicionar }) {
     setErro("");
   };
 
-  <form className="">
-    <input value={texto} onChange={(event) => setTexto(event.target.value)} />
-    {erro !== "" && <p className="erro">{erro}</p>}
-    <button type="submit">Adicionar</button>
-  </form>;
+  return (
+    <form className="formulario" onSubmit={enviar}>
+      <input value={texto} onChange={(event) => setTexto(event.target.value)} />
+      {erro !== "" && <p className="erro">{erro}</p>}
+      <button type="submit">Adicionar</button>
+    </form>
+  );
 }
