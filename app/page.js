@@ -1,4 +1,4 @@
-import Cabecalho from "@/components/cabecalho";
+import Cabecalho from "@/components/Cabecalho/Cabecalho";
 import ListaDeTarefas from "@/components/ListaDeTarefas";
 
 export default function home() {

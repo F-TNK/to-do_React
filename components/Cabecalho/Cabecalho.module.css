@@ -1,0 +1,15 @@
+.cabecalho {
+  background: var(--cor-texto);
+  color: var(--cor-superficie);
+  padding: var(--espaco);
+  text-align: center;
+}
+.titulo {
+  margin: 0;
+  font-size: 1.6rem;
+}
+.subtitulo {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

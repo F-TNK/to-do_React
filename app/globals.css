@@ -1,104 +1,40 @@
-/* ============================================================
-   globals.css — Estilos globais da aplicação
-   ============================================================
-   Este arquivo é importado em layout.js, então as regras daqui
-   valem para TODAS as páginas. As classes usadas nos componentes
-   (className="tarefa", "formulario", etc.) são definidas aqui. */
-
-/* ===== variáveis (custom properties) =====
-   :root representa o elemento <html>. Variáveis declaradas aqui
-   ficam disponíveis no site todo e são usadas com var(--nome).
-   Vantagem: para mudar uma cor do site inteiro, basta mudar aqui. */
+/* Aula 24: o globals.css fica só com a BASE do site.
+   O visual de cada componente mora no .module.css da pasta dele. */
 :root {
-  --cor-fundo: #f4f5ef;
-  --cor-superficie: #ffffff;
-  --cor-texto: #13202d;
-  --cor-texto-suave: #5b6670;
-  --cor-principal: #e07a2e;
-  --cor-principal-escura: #b85f1e;
-  --cor-perigo: #c62828;
-  --cor-ok: #2e7d32;
-  --cor-borda: #d9dcd3;
-  --raio: 8px; /* arredondamento padrão dos cantos */
-  --espaco: 1rem; /* espaçamento padrão (1rem = tamanho da fonte base, ~16px) */
+  --cor-fundo: #F4F5EF;
+  --cor-superficie: #FFFFFF;
+  --cor-texto: #13202D;
+  --cor-texto-suave: #5B6670;
+  --cor-principal: #E07A2E;
+  --cor-principal-escura: #B85F1E;
+  --cor-perigo: #C62828;
+  --cor-ok: #2E7D32;
+  --cor-info: #1565C0;
+  --cor-borda: #D9DCD3;
+  --raio: 8px;
+  --espaco: 1rem;
 }
 
-/* O seletor * pega TODOS os elementos.
-   box-sizing: border-box faz a largura (width) incluir padding e
-   borda — fica bem mais fácil calcular tamanhos. */
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0; /* remove a margem padrão do navegador */
-  font-family: system-ui, "Segoe UI", Roboto, sans-serif; /* lista de fontes: usa a primeira disponível */
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
   background: var(--cor-fundo);
   color: var(--cor-texto);
-  line-height: 1.5; /* altura da linha: melhora a leitura */
+  line-height: 1.5;
 }
 
-/* Por padrão, botões e campos NÃO herdam a fonte da página.
-   font: inherit corrige isso. */
 button,
 input,
 select {
   font: inherit;
 }
 
-/* ===== cabeçalho ===== (componente Cabecalho.js) */
-.cabecalho {
-  background: var(--cor-texto);
-  color: var(--cor-superficie);
-  padding: var(--espaco);
-  text-align: center;
-}
-
-/* Seletor de DESCENDENTE: pega o <h1> que está dentro de .cabecalho */
-.cabecalho h1 {
-  margin: 0;
-  font-size: 1.6rem;
-}
-
-.cabecalho p {
-  margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.8; /* deixa o subtítulo um pouco transparente */
-}
-
-/* Container centralizado com largura máxima.
-   margin: 0 auto centraliza horizontalmente um bloco com largura definida. */
-.conteudo {
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: var(--espaco);
-}
-
-/* ===== formulário ===== (componente FormTarefa.js) */
-/* FLEXBOX: organiza os filhos (input, erro, botão) em uma coluna.
-   gap define o espaço entre eles. */
-.formulario {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  background: var(--cor-superficie);
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio);
-  padding: var(--espaco);
-}
-
-.formulario input,
-.formulario select {
-  padding: 0.6rem 0.75rem; /* vertical | horizontal */
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio);
-  min-width: 0; /* evita que o input "estoure" o container no flexbox */
-}
-
-/* Estilo padrão de todos os botões */
 button {
-  cursor: pointer; /* mãozinha ao passar o mouse */
+  cursor: pointer;
   padding: 0.6rem 1rem;
   border: none;
   border-radius: var(--raio);
@@ -107,18 +43,15 @@ button {
   font-weight: bold;
 }
 
-/* PSEUDO-CLASSE :hover → quando o mouse está em cima */
 button:hover {
   background: var(--cor-principal-escura);
 }
 
-/* :disabled → quando o botão tem o atributo disabled */
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* Variação de botão "contornado" (sem fundo) */
 .botao-secundario {
   background: transparent;
   color: var(--cor-texto);
@@ -129,162 +62,9 @@ button:disabled {
   background: var(--cor-borda);
 }
 
-/* Mensagem de erro do formulário (aparece quando o campo está vazio) */
-.erro {
-  color: var(--cor-perigo);
-  font-weight: bold;
-  margin: 0;
-}
-
-/* ===== resumo e filtros =====
-   (estilos preparados para funcionalidades futuras da aula) */
-.resumo {
-  display: flex;
-  flex-wrap: wrap; /* permite quebrar linha em telas pequenas */
-  align-items: center; /* alinha no eixo vertical */
-  justify-content: space-between; /* espalha os itens nas pontas */
-  gap: 0.5rem;
-  margin: var(--espaco) 0;
-}
-
-.resumo p {
-  margin: 0;
-  color: var(--cor-texto-suave);
-}
-
-.filtros {
-  display: flex;
-  gap: 0.25rem;
-}
-
-.filtros button {
-  padding: 0.35rem 0.75rem;
-  font-size: 0.9rem;
-}
-
-/* Botão do filtro selecionado no momento */
-.filtros .ativo {
-  background: var(--cor-texto);
-  color: var(--cor-superficie);
-  border-color: var(--cor-texto);
-}
-
-/* ===== lista ===== (componentes ListaDeTarefas.js e TarefaItem.js) */
-.lista {
-  list-style: none; /* remove as bolinhas da <ul> */
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-/* Cada tarefa (<li className="tarefa">) vira um "cartão" */
-.tarefa {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--cor-superficie);
-  border: 1px solid var(--cor-borda);
-  border-left: 4px solid var(--cor-principal); /* faixa colorida à esquerda */
-  border-radius: var(--raio);
-  padding: 0.5rem 0.75rem;
-}
-
-/* flex: 1 1 X → pode crescer (1), pode encolher (1), tamanho base X.
-   calc() faz contas misturando unidades (100% menos 3rem). */
-.tarefa label {
-  flex: 1 1 calc(100% - 3rem);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-/* Seletor de ATRIBUTO: só inputs do tipo checkbox */
-.tarefa input[type="checkbox"] {
-  width: 1.2rem;
-  height: 1.2rem;
-}
-
-/* Campo usado ao editar uma tarefa (funcionalidade futura) */
-.tarefa .editar {
-  flex: 1 1 calc(100% - 3rem);
-  padding: 0.35rem 0.5rem;
-  border: 1px solid var(--cor-principal);
-  border-radius: var(--raio);
-}
-
-.tarefa button {
-  padding: 0.35rem 0.75rem;
-  font-size: 0.85rem;
-}
-
-/* 4.1: etiquetas de prioridade */
-.etiqueta {
-  font-size: 0.8rem;
-  font-weight: bold;
-  padding: 0.1rem 0.6rem;
-  border-radius: 999px; /* valor bem alto = formato de "pílula" */
-  white-space: nowrap; /* impede o texto de quebrar linha */
-}
-
-/* .etiqueta.alta (sem espaço) = elemento que tem AS DUAS classes */
-.etiqueta.alta {
-  background: #fde3e1;
-  color: #a1231c;
-}
-
-.etiqueta.media {
-  background: #fff1d6;
-  color: #7a5300;
-}
-
-.etiqueta.baixa {
-  background: #e2f1e3;
-  color: #24652a;
-}
-
-/* Aplicada pelo TarefaItem quando tarefa.concluida é true */
-.concluida {
-  border-left-color: var(--cor-ok); /* faixa fica verde */
-  opacity: 0.7;
-}
-
-/* Risca o texto da tarefa concluída */
-.concluida span {
-  text-decoration: line-through;
-}
-
-/* Mensagem para quando a lista estiver vazia */
-.vazio {
-  text-align: center;
-  color: var(--cor-texto-suave);
-}
-
-/* ===== responsividade =====
-   MEDIA QUERY: as regras abaixo só valem quando a tela tiver
-   PELO MENOS 600px de largura. Essa abordagem chama-se
-   "mobile first": o estilo base é para celular e aqui
-   ajustamos para telas maiores. */
-@media (min-width: 600px) {
-  /* Em telas grandes, input e botão ficam lado a lado */
-  .formulario {
-    flex-direction: row;
-  }
-
-  .formulario input,
-  .formulario select {
-    flex: 1; /* o campo ocupa todo o espaço que sobrar */
-  }
-
-  .tarefa {
-    flex-wrap: nowrap;
-  }
-
-  .tarefa label,
-  .tarefa .editar {
-    flex: 1;
-  }
+.conteudo {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--espaco);
 }
