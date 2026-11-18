@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function FormTarefa({ aoAdicionar }) {
   const [texto, setTexto] = useState("");
   const [erro, setErro] = useState("");
-  const [prioridade, setPrioridade] = useState("");
+  const [prioridade, setPrioridade] = useState("media");
 
   const enviar = (event) => {
     event.preventDefault();
@@ -23,13 +23,14 @@ export default function FormTarefa({ aoAdicionar }) {
       <input value={texto} onChange={(event) => setTexto(event.target.value)} />
       {erro !== "" && <p className="erro">{erro}</p>}
       <select
+        aria-label="Prioridade" // Funciona como o <Label>
         className="prioridade"
         value={prioridade}
         onChange={(event) => setPrioridade(event.target.value)}
       >
-        <option className="etiquetaAlta">Alta</option>
-        <option className="etiquetaMedia">Média</option>
-        <option className="etiquetaBaixa">Baixa</option>
+        <option value="alta">Alta</option>
+        <option value="media">Média</option>
+        <option value="baixa">Baixa</option>
       </select>
       <button type="submit">Adicionar</button>
     </form>
