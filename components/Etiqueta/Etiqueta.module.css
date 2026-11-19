@@ -1,0 +1,15 @@
+.etiqueta {
+  border-radius: 999px;
+}
+
+.alta {
+  background: #fde3e1;
+}
+
+.media {
+  background: #fff1d6;
+}
+
+.baixa {
+  background: #e2f1e3;
+}

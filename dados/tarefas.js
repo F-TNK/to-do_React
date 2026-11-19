@@ -1,10 +1,10 @@
-const COLUNAS = [
+export const COLUNAS = [
   { status: "afazer", titulo: "A fazer" },
   { status: "fazendo ", titulo: "Fazendo" },
   { status: "feito ", titulo: "Feito" },
 ];
 
-const tarefasIniciais = [
+export const tarefasIniciais = [
   {
     id: 1,
     descricao: "Instalar o Node.js",
